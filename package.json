@@ -1,0 +1,34 @@
+{
+  "name": "primeinsuranceanalysistoolweb",
+  "version": "1.0.0",
+  "description": "Prime Insurance Analysis Tool website for only admin",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "env-cmd ./config/dev.env nodemon src/app.js -e js,hbs"
+  },
+  "keywords": [
+    "Prime",
+    "Insurance",
+    "Rwanda",
+    "Prime",
+    "Analysis",
+    "Tool"
+  ],
+  "author": "devemm",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "env-cmd": "^8.0.2",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}

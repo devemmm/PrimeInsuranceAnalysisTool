@@ -7,10 +7,12 @@ const {
   surveyControll,
   createSurveyWithNewServices,
   newquetion,
+  generateReport,
   deleteService,
   getSurveyResponse,
   updateAccount,
   changePassword,
+  fetchComment,
   signout,
 } = require("../controller/AppController");
 
@@ -27,6 +29,10 @@ route.get("/survey", surveyControll);
 route.post("/survey", createSurveyWithNewServices);
 
 route.post("/user/acount", updateAccount);
+
+route.get("/report", generateReport);
+
+route.get("/comments", fetchComment);
 
 route.post("/user/acount/password", changePassword);
 

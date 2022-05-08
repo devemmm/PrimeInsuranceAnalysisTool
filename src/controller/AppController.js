@@ -1,4 +1,5 @@
 const primeInsuranceApi = require("../api/primeInsuranceApi");
+const moment = require("moment");
 
 const subSurvey = [
   (req, res) => {
@@ -100,6 +101,36 @@ const arrangem = (data) => {
     verry_dissatisfied_d,
   };
 };
+
+const generateReport = [
+  async (req, res) => {
+    try {
+      const { data } = req.cookies;
+
+      const { user, token } = data;
+
+      await primeInsuranceApi.get("/responses/survey/report", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      req.session.message = {
+        type: "success",
+        intro: "System ",
+        message:
+          "report sent to your email address Please check... make sure the your account email was been verfied and valid",
+      };
+      return res.redirect("/home");
+    } catch (error) {
+      req.session.message = {
+        type: "danger",
+        intro: "System ",
+        message: error.response.data.error.message,
+      };
+      return res.redirect("/home");
+    }
+  },
+];
 
 const home = [
   async (req, res) => {
@@ -358,6 +389,18 @@ const changePassword = [
   },
 ];
 
+const fetchComment = [
+  async (req, res) => {
+    try {
+      const comments = await primeInsuranceApi.get("responses/survey/comment");
+      res.render("messages", {
+        data: comments?.data?.comment,
+      });
+    } catch (error) {
+      res.render("page404");
+    }
+  },
+];
 const signout = [
   (req, res) => {
     try {
@@ -379,7 +422,9 @@ module.exports = {
   newquetion,
   deleteService,
   getSurveyResponse,
+  generateReport,
   updateAccount,
   changePassword,
+  fetchComment,
   signout,
 };

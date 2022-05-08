@@ -42,16 +42,33 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>ApexCharts</h1>
+      <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
           <li class="breadcrumb-item">Charts</li>
-          <li class="breadcrumb-item active">ApexCharts</li>
+          <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
+
+    <a href="/report"><button type="button" class="btn btn-success btn-lg" style="margin-bottom: 30px;">Generate Report</button></a>
+    {{#if message}}
+      <div
+        style="text-align: center"
+        class="alert alert-{{message.type}}"
+      >
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+        >&times;</button>
+        <strong>{{message.intro}}</strong>
+        {{message.message}}
+      </div>
+
+    {{/if}}
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
